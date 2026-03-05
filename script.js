@@ -19,7 +19,7 @@ const typedText = document.getElementById("typed-text");
 
 function type() {
   if (isFirstPhrase) {
-    // Prima animazione: digita "Hi, I'm zrxhq"
+
     if (charIndex < firstPhrase.length) {
       typedText.textContent += firstPhrase.charAt(charIndex);
       charIndex++;
@@ -42,13 +42,13 @@ function type() {
 
 function erase() {
   if (isFirstPhrase) {
-    // Cancella "Hi, I'm zrxhq" fino a "Hi, I'm ", poi passa ai ruoli
+   
     if (charIndex > fixedPrefix.length) {
       charIndex--;
       typedText.textContent = firstPhrase.substring(0, charIndex);
       setTimeout(erase, eraseSpeed);
     } else {
-      // Fine della cancellazione della prima frase
+      
       isFirstPhrase = false;
       roleIndex = 0;
       charIndex = 0;
@@ -56,7 +56,7 @@ function erase() {
       setTimeout(type, 500);
     }
   } else {
-    // Cancella il ruolo, mantenendo "Hi, I'm "
+ 
     if (charIndex > 0) {
       charIndex--;
       typedText.textContent = fixedPrefix + roles[roleIndex].substring(0, charIndex);
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function() {
   setTimeout(type, 1000);
 });
 
-// Hamburger menu toggle
+
 document.addEventListener("DOMContentLoaded", function() {
   const nav = document.getElementById('main-nav');
   const toggle = document.getElementById('nav-toggle');
@@ -91,7 +91,6 @@ document.addEventListener("DOMContentLoaded", function() {
     setOpen(!isOpen);
   });
 
-  // Close menu when a nav link is clicked
   nav.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', (e) => {
       // Smooth-scroll to target and center it in viewport instead of sticking to top
@@ -107,7 +106,8 @@ document.addEventListener("DOMContentLoaded", function() {
           const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
           const scrollTo = Math.max(0, Math.min(desiredTop, maxScroll));
           window.scrollTo({ top: scrollTo, behavior: 'smooth' });
-          // update the URL hash without jumping
+          
+
           history.replaceState(null, '', href);
         }
       }
@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 
-// ================= ULTRA PRO LIGHTBOX =================
+
 document.addEventListener("DOMContentLoaded", function () {
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightbox-img");
@@ -205,7 +205,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (e.key === "ArrowLeft") prevImage();
   });
 
-  // ================= SWIPE MOBILE =================
+  
   let startX = 0;
 
   lightbox.addEventListener("touchstart", (e) => {
@@ -223,7 +223,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// If the page is loaded with a hash, adjust scroll to the aligned position.
+
 window.addEventListener('load', () => {
   if (location.hash) {
     // small timeout to allow browser layout and any default jump to finish
@@ -234,7 +234,7 @@ window.addEventListener('load', () => {
   }
 });
 
-// ================= HEADER SCURO ALLO SCROLL =================
+
 const header = document.querySelector('.site-header');
 window.addEventListener('scroll', () => {
   if (!header) return;
@@ -245,7 +245,7 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// ================= SEZIONE ATTIVA NEL MENU =================
+
 const sections = document.querySelectorAll('section, .container[id]');
 const navLinks = document.querySelectorAll('.site-nav a');
 
@@ -262,7 +262,7 @@ function activateMenu() {
 window.addEventListener('scroll', activateMenu);
 window.addEventListener('load', activateMenu);
 
-// ================= REVEAL CONTAINER ALLO SCROLL =================
+
 const revealElements = document.querySelectorAll('.container.reveal');
 function revealOnScroll() {
   const windowHeight = window.innerHeight;
